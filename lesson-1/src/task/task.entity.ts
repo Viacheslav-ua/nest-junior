@@ -1,10 +1,15 @@
-import { ITask } from "./task.interface"
+import { ITask, Status } from "./task.interface"
 
 export class Task implements ITask {
-    id: number
-    task: string
-    constructor(task: string) {
-      this.task = task
-      this.id = new Date().getTime()
-    }
+  task: string
+  id = new Date().getTime()
+  status: Status = Status.CREATED
+  tags: string[] = []
+  createdAt: Date = new Date()
+  updatedAt: Date = new Date()
+  constructor(task: string, tags?: string[], status?: Status) {
+    this.task = task
+    this.tags = tags
+    this.status = status
   }
+}
